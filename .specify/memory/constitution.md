@@ -1,50 +1,156 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+==================
+Version change: [TEMPLATE] → 1.0.0
+Bump type: MAJOR — first concrete governance document replacing unfilled template.
+
+Modified principles: N/A (first population)
+Added sections:
+  - Core Principles (7 principles)
+  - Development Discipline (5 principles)
+  - Governance
+
+Removed sections: N/A
+
+Templates reviewed:
+  ✅ .specify/templates/plan-template.md
+       "Constitution Check" gate is generic/project-agnostic — compatible.
+       No updates required.
+  ✅ .specify/templates/spec-template.md
+       No constitution-specific references. Compatible as-is.
+  ✅ .specify/templates/tasks-template.md
+       No constitution-specific references. Compatible as-is.
+  ℹ️  .specify/templates/commands/ — directory does not exist; no command files to review.
+
+Deferred items: None. All placeholders resolved.
+-->
+
+# Personal Technical Portfolio Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Architectural Preservation
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+The existing Astro Keel architecture MUST be preserved unless a change is strictly
+necessary to satisfy an explicit feature specification. Structural changes require
+written justification in the feature spec before implementation begins.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+**Rationale**: The template ships at Lighthouse 100/100/100/100. Unsolicited
+refactoring risks regressions in performance, accessibility, and SEO with no
+corresponding user value.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Configuration Over Code
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+Changes MUST be implemented as configuration or content edits before any new
+component or architectural rewrite is considered. A new component is only justified
+when a configuration-only path is verifiably impossible.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**Rationale**: The Astro Keel template is designed around a single config file
+(`src/consts.ts`) and content collections. Respecting that contract keeps the site
+maintainable by one person without deep framework expertise.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### III. Reuse Existing Infrastructure
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+All features MUST reuse the existing layouts, styles, content collections, SEO
+metadata, search, accessibility attributes, and responsive breakpoints. Duplicating
+or shadowing existing infrastructure is not permitted.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+**Rationale**: Duplication creates drift. The template's existing infrastructure
+already satisfies quality requirements; anything new must integrate, not parallel.
+
+### IV. No Backend or Unnecessary Dependencies
+
+The site MUST remain a static Astro build. No backend, database, authentication
+system, CMS, or runtime server MUST be introduced. New npm packages require
+explicit justification and MUST not be added if an existing Astro Keel dependency
+already covers the need.
+
+**Rationale**: Backend complexity is out of scope for a personal static portfolio.
+Every dependency is a maintenance obligation and a potential supply-chain risk.
+
+### V. Maintain Quality Standards
+
+Every shipped change MUST preserve the existing Lighthouse 100/100/100/100 scores
+(Performance, Accessibility, Best Practices, SEO), WCAG 2.1 AA accessibility
+compliance, mobile-first responsive layout, and canonical SEO metadata.
+
+**Rationale**: These standards define the production baseline. Regressions are
+not acceptable tradeoffs for new features.
+
+### VI. Professional Focus
+
+The site MUST remain simple, professional, and editorial in tone. Visual redesign,
+decorative complexity, animations beyond what the template ships, or content outside
+the scope of technical projects and engineering writing are out of scope.
+
+**Rationale**: The portfolio's purpose is to communicate technical competence to
+professional audiences. Simplicity and clarity serve that goal better than novelty.
+
+### VII. Content Collection Discipline
+
+Portfolio projects MUST be added to the existing `works` content collection.
+Technical articles MUST be added to the existing `blog` content collection.
+No new top-level content collection MUST be created without an explicit specification
+that justifies why the existing collections are insufficient.
+
+**Rationale**: The template's two-collection model (works + blog) covers the full
+scope of a technical portfolio. Proliferating collections fragments navigation and
+increases maintenance surface.
+
+## Development Discipline
+
+### VIII. Ship Speed First
+
+Shipping speed and long-term maintainability MUST take priority over feature
+expansion. A working, content-populated site delivered quickly is more valuable than
+a feature-rich site delivered slowly. Gold-plating and speculative generalization are
+not permitted.
+
+### IX. Build Gate (NON-NEGOTIABLE)
+
+Every change MUST pass `npm run build` without errors or warnings before it is
+considered complete. A change that breaks the build MUST be reverted or fixed before
+any other work proceeds.
+
+### X. Template Preservation
+
+Working template functionality MUST NOT be modified unless an explicit, approved
+specification requires it. If a feature can be delivered by adding to the template
+rather than changing it, the additive path MUST be chosen.
+
+### XI. Minimal Dependencies
+
+The existing Astro Keel dependency stack MUST be reused wherever possible. Before
+adding any new package, the implementer MUST verify that no existing dependency
+already satisfies the need. Packages added solely for convenience or developer
+ergonomics are not justified.
+
+### XII. Production-Ready Goal
+
+The objective is a production-ready personal portfolio delivered quickly — not a
+redesign, re-engineering effort, or technology showcase. Every decision MUST be
+evaluated against this goal. If a change does not make the portfolio more complete
+or more accurate, it SHOULD NOT be made.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other informal practices for this project.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Amendment procedure**: Any principle change requires a written rationale in the
+feature spec before implementation. Amendments MUST increment the constitution
+version following semantic versioning (MAJOR: principle removed or redefined;
+MINOR: principle added or materially expanded; PATCH: clarification or wording fix)
+and update `LAST_AMENDED` to the date of change.
+
+**Compliance review**: Every feature plan MUST include a "Constitution Check" gate
+that verifies the proposed design does not violate any principle above. Violations
+require explicit justification and user approval before proceeding.
+
+**Complexity justification**: Any deviation from the principles above MUST be
+documented in the plan's Complexity Tracking table, naming the principle violated,
+why it is necessary, and what simpler alternative was rejected and why.
+
+**Runtime development guidance**: For day-to-day implementation decisions, refer
+to `CLAUDE.md` at the repository root.
+
+**Version**: 1.0.0 | **Ratified**: 2026-08-14 | **Last Amended**: 2026-08-14
