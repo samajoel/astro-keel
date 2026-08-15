@@ -1308,3 +1308,252 @@ pre code {
   text-transform: uppercase;
   padding-top: 0.2rem;
 }
+
+
+
+
+
+
+/* ========================================
+   Skills Marquee
+======================================== */
+
+.skills-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding: 1.1rem 0;
+
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+/* Track containing both identical groups */
+
+.skills-track {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+
+  animation: skills-marquee 30s linear infinite;
+
+  will-change: transform;
+}
+
+
+/* Each repeated group */
+
+.skills-group {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap: 2rem;
+
+  padding-right: 2rem;
+}
+
+
+/* Individual skill */
+
+.skills-item {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  white-space: nowrap;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  line-height: 1;
+
+  color: var(--color-text);
+}
+
+
+/* Skill icons */
+
+.skills-item img {
+  width: 20px;
+  height: 20px;
+
+  min-width: 20px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   Theme-aware monochrome icons
+======================================== */
+
+.theme-icon {
+  filter: none;
+
+  opacity: 0.9;
+
+  transition:
+    filter 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+/* Dark mode */
+
+[data-theme='dark'] .theme-icon {
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(100%);
+
+  opacity: 1;
+}
+
+
+/* ========================================
+   Marquee animation
+======================================== */
+
+@keyframes skills-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* Pause when user hovers */
+
+.skills-marquee:hover .skills-track {
+  animation-play-state: paused;
+}
+
+
+/* ========================================
+   Edge fade
+======================================== */
+
+.skills-marquee::before,
+.skills-marquee::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 4rem;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+.skills-marquee::before {
+  left: 0;
+
+  background:
+    linear-gradient(
+      to right,
+      var(--color-background),
+      transparent
+    );
+}
+
+
+.skills-marquee::after {
+  right: 0;
+
+  background:
+    linear-gradient(
+      to left,
+      var(--color-background),
+      transparent
+    );
+}
+
+
+/* ========================================
+   Accessibility
+======================================== */
+
+.visually-hidden {
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  padding: 0 !important;
+  margin: -1px !important;
+
+  overflow: hidden !important;
+
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+
+  border: 0 !important;
+}
+
+
+/* Respect reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .skills-track {
+    animation: none;
+  }
+
+  .skills-group:nth-child(2) {
+    display: none;
+  }
+
+}
+
+
+/* ========================================
+   Mobile
+======================================== */
+
+@media (max-width: 640px) {
+
+  .skills-marquee {
+    padding: 1rem 0;
+  }
+
+  .skills-track {
+    animation-duration: 24s;
+  }
+
+  .skills-group {
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .skills-item {
+    font-size: 0.9rem;
+  }
+
+  .skills-item img {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+  }
+
+  .skills-marquee::before,
+  .skills-marquee::after {
+    width: 2rem;
+  }
+
+}

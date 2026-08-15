@@ -37,7 +37,6 @@ publishDate: 2026-08-14
   <div><dt>Role</dt><dd>Cloud Deployment · Infrastructure · Modernization · Troubleshooting</dd></div>
   <div><dt>Status</dt><dd>Deployed · Live</dd></div>
   <div><dt>Key technologies</dt><dd>Microsoft Foundry · Azure Container Apps · Terraform · Python · Azure SQL</dd></div>
-  <div><dt>Validation</dt><dd>11/11 scenarios passed</dd></div>
 </dl>
 
 ## Problem
@@ -137,7 +136,7 @@ Azure SQL with AdventureWorksLT sample data was retained as the active structure
 The diagram below shows the verified final deployment. Simplified view is shown by default — toggle to see the full infrastructure layer.
 
 <div class="diagram-scroll">
-<svg id="arch-svg" role="img" aria-labelledby="arch-title" viewBox="0 0 900 520" width="100%" style="max-width:900px;display:block;margin:0 auto;font-family:inherit">
+<svg id="arch-svg" role="img" aria-labelledby="arch-title" viewBox="0 0 920 480" width="100%" style="max-width:920px;display:block;margin:0 auto;font-family:inherit">
   <title id="arch-title">Architecture diagram: Agentic data application on Azure</title>
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
@@ -149,195 +148,184 @@ The diagram below shows the verified final deployment. Simplified view is shown 
   </defs>
 
   <g id="arch-simplified">
-
-    <text x="450" y="22" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.08em" fill="var(--color-muted)" style="text-transform:uppercase">Primary Request Path</text>
+    <text x="240" y="14" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.08em" fill="var(--color-muted)" style="text-transform:uppercase">Primary Request Path — click a node for details</text>
 
     <g data-detail="End user sending natural-language questions via the chat interface." style="cursor:pointer">
-      <rect x="30" y="40" width="90" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
-      <text x="75" y="60" text-anchor="middle" font-size="12" fill="var(--color-text)">User</text>
-      <text x="75" y="76" text-anchor="middle" font-size="10" fill="var(--color-muted)">Browser</text>
+      <rect x="130" y="22" width="220" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+      <text x="240" y="42" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text)">User</text>
+      <text x="240" y="58" text-anchor="middle" font-size="10" fill="var(--color-muted)">Browser</text>
     </g>
 
-    <g data-detail="React SPA containerized with nginx. Deployed by Joel to Azure Container Apps using ACR. Serves the chat interface." style="cursor:pointer">
-      <rect x="160" y="40" width="130" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="225" y="60" text-anchor="middle" font-size="11" fill="var(--color-text)">React / nginx</text>
-      <text x="225" y="76" text-anchor="middle" font-size="10" fill="var(--color-muted)">Frontend · Container App</text>
+    <g data-detail="React SPA containerized with nginx. Deployed by Joel to Azure Container Apps using ACR. Serves the chat interface and streams AI responses." style="cursor:pointer">
+      <rect x="130" y="112" width="220" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="240" y="132" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">React / nginx</text>
+      <text x="240" y="148" text-anchor="middle" font-size="10" fill="var(--color-muted)">Frontend · Container App</text>
     </g>
 
     <g data-detail="FastAPI backend. Modernized by Joel. Routes chat to FoundryAgent and persists conversation history to Cosmos DB. Deployed as a Container App." style="cursor:pointer">
-      <rect x="340" y="40" width="130" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="405" y="60" text-anchor="middle" font-size="11" fill="var(--color-text)">Python FastAPI</text>
-      <text x="405" y="76" text-anchor="middle" font-size="10" fill="var(--color-muted)">Backend · Container App</text>
+      <rect x="130" y="202" width="220" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="240" y="222" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Python FastAPI</text>
+      <text x="240" y="238" text-anchor="middle" font-size="10" fill="var(--color-muted)">Backend · Container App</text>
     </g>
 
-    <g data-detail="FoundryAgent ('first-agent'). Microsoft-provided agent runtime hosted in Microsoft Foundry. Receives queries from FastAPI, invokes the SQL Query Tool." style="cursor:pointer">
-      <rect x="520" y="40" width="130" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
-      <text x="585" y="58" text-anchor="middle" font-size="11" fill="var(--color-text)">FoundryAgent</text>
-      <text x="585" y="74" text-anchor="middle" font-size="10" fill="var(--color-muted)">(first-agent)</text>
+    <g data-detail="FoundryAgent ('first-agent'). Microsoft-provided agent runtime hosted in Microsoft Foundry. Receives queries from FastAPI, invokes the SQL Query Tool, streams the response." style="cursor:pointer">
+      <rect x="130" y="292" width="220" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+      <text x="240" y="312" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">FoundryAgent</text>
+      <text x="240" y="328" text-anchor="middle" font-size="10" fill="var(--color-muted)">(first-agent · Microsoft Foundry)</text>
     </g>
 
-    <g data-detail="SQL Query Tool. Microsoft-provided tool registered in FoundryAgent. Generates and executes T-SQL queries against Azure SQL (AdventureWorksLT)." style="cursor:pointer">
-      <rect x="700" y="40" width="130" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
-      <text x="765" y="58" text-anchor="middle" font-size="11" fill="var(--color-text)">SQL Query Tool</text>
-      <text x="765" y="74" text-anchor="middle" font-size="10" fill="var(--color-muted)">Microsoft-provided</text>
+    <g data-detail="SQL Query Tool. Microsoft-provided tool registered in FoundryAgent. Generates and executes T-SQL queries against Azure SQL (AdventureWorksLT). Returns structured results." style="cursor:pointer">
+      <rect x="130" y="382" width="220" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+      <text x="240" y="402" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">SQL Query Tool</text>
+      <text x="240" y="418" text-anchor="middle" font-size="10" fill="var(--color-muted)">Microsoft-provided</text>
+    </g>
+
+    <g data-detail="Cosmos DB for conversation persistence. NoSQL store for full chat history. Networking and data-plane permissions configured by Joel via Terraform." style="cursor:pointer">
+      <rect x="430" y="202" width="200" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="530" y="222" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Cosmos DB</text>
+      <text x="530" y="238" text-anchor="middle" font-size="10" fill="var(--color-muted)">Conversation history</text>
     </g>
 
     <g data-detail="Azure SQL with AdventureWorksLT. Active structured-data backend. SQL firewall, Entra auth, and db_datareader/db_datawriter roles configured by Joel." style="cursor:pointer">
-      <rect x="700" y="160" width="130" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="765" y="179" text-anchor="middle" font-size="11" fill="var(--color-text)">Azure SQL</text>
-      <text x="765" y="195" text-anchor="middle" font-size="10" fill="var(--color-muted)">AdventureWorksLT</text>
+      <rect x="430" y="382" width="200" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="530" y="402" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Azure SQL</text>
+      <text x="530" y="418" text-anchor="middle" font-size="10" fill="var(--color-muted)">AdventureWorksLT</text>
     </g>
 
-    <g data-detail="Cosmos DB for conversation persistence. NoSQL store for full chat history. Networking and data-plane permissions configured by Joel." style="cursor:pointer">
-      <rect x="340" y="160" width="130" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="405" y="179" text-anchor="middle" font-size="11" fill="var(--color-text)">Cosmos DB</text>
-      <text x="405" y="195" text-anchor="middle" font-size="10" fill="var(--color-muted)">Conversation history</text>
-    </g>
+    <line x1="240" y1="66" x2="240" y2="110" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="240" y1="156" x2="240" y2="200" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="240" y1="246" x2="240" y2="290" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="240" y1="336" x2="240" y2="380" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="352" y1="404" x2="428" y2="404" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="352" y1="224" x2="428" y2="224" stroke="var(--color-muted)" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
 
-    <g data-detail="User-assigned Managed Identity. Provides credential-less access to ACR, Cosmos DB, Azure SQL, and other services. Configured by Joel via Terraform." style="cursor:pointer">
-      <rect x="520" y="280" width="130" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="585" y="298" text-anchor="middle" font-size="11" fill="var(--color-text)">Managed Identity</text>
-      <text x="585" y="314" text-anchor="middle" font-size="10" fill="var(--color-muted)">User-assigned</text>
-    </g>
+    <path d="M 630 404 L 700 404 L 700 44 L 352 44" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrow-return)"/>
 
-    <g data-detail="Brownfield Terraform configuration managing the Azure infrastructure: Container Apps environment, ACR, Managed Identity, Log Analytics, and RBAC. Introduced by Joel." style="cursor:pointer">
-      <rect x="700" y="280" width="130" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="765" y="302" text-anchor="middle" font-size="11" fill="var(--color-text)">Terraform</text>
-      <text x="765" y="318" text-anchor="middle" font-size="10" fill="var(--color-muted)">IaC · Infrastructure</text>
-    </g>
-
-    <line x1="120" y1="62" x2="158" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="290" y1="62" x2="338" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="470" y1="62" x2="518" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="650" y1="62" x2="698" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="765" y1="84" x2="765" y2="158" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="700" y1="182" x2="660" y2="182" stroke="var(--color-accent)" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#arrow-return)"/>
-    <line x1="660" y1="182" x2="650" y2="62" stroke="var(--color-accent)" stroke-width="1.2" stroke-dasharray="5 3"/>
-    <line x1="405" y1="84" x2="405" y2="158" stroke="var(--color-muted)" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
-
-    <text x="450" y="268" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.08em" fill="var(--color-muted)" style="text-transform:uppercase">Supporting Infrastructure</text>
-
-    <rect x="30" y="360" width="14" height="14" rx="2" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1"/>
-    <text x="50" y="372" font-size="11" fill="var(--color-muted)">Joel-configured</text>
-    <rect x="180" y="360" width="14" height="14" rx="2" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
-    <text x="200" y="372" font-size="11" fill="var(--color-muted)">Microsoft-provided</text>
-    <line x1="370" y1="367" x2="395" y2="367" stroke="var(--color-accent)" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrow-return)"/>
-    <text x="400" y="372" font-size="11" fill="var(--color-muted)">Response path</text>
+    <rect x="130" y="448" width="12" height="12" rx="2" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1"/>
+    <text x="148" y="459" font-size="10" fill="var(--color-muted)">Joel-configured</text>
+    <rect x="280" y="448" width="12" height="12" rx="2" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+    <text x="298" y="459" font-size="10" fill="var(--color-muted)">Microsoft-provided</text>
+    <line x1="440" y1="454" x2="470" y2="454" stroke="var(--color-accent)" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrow-return)"/>
+    <text x="478" y="459" font-size="10" fill="var(--color-muted)">Response path</text>
   </g>
 
-  <g id="arch-full" hidden="true">
-
-    <text x="450" y="22" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.08em" fill="var(--color-muted)" style="text-transform:uppercase">Full Architecture</text>
+  <g id="arch-full" style="display:none">
+    <text x="460" y="14" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.08em" fill="var(--color-muted)" style="text-transform:uppercase">Full Architecture — click a node for details</text>
 
     <g data-detail="End user sending natural-language questions via the chat interface." style="cursor:pointer">
-      <rect x="10" y="40" width="90" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
-      <text x="55" y="60" text-anchor="middle" font-size="11" fill="var(--color-text)">User</text>
-      <text x="55" y="76" text-anchor="middle" font-size="10" fill="var(--color-muted)">Browser</text>
+      <rect x="10" y="30" width="100" height="40" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+      <text x="60" y="48" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">User</text>
+      <text x="60" y="62" text-anchor="middle" font-size="9" fill="var(--color-muted)">Browser</text>
     </g>
 
-    <g data-detail="React SPA containerized with nginx. Deployed by Joel to Azure Container Apps." style="cursor:pointer">
-      <rect x="120" y="40" width="120" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="180" y="58" text-anchor="middle" font-size="11" fill="var(--color-text)">React / nginx</text>
-      <text x="180" y="74" text-anchor="middle" font-size="10" fill="var(--color-muted)">Container App</text>
+    <g data-detail="React SPA containerized with nginx. Deployed by Joel to Azure Container Apps using ACR. Serves the chat interface." style="cursor:pointer">
+      <rect x="120" y="30" width="120" height="40" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="180" y="48" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">React / nginx</text>
+      <text x="180" y="62" text-anchor="middle" font-size="9" fill="var(--color-muted)">Container App</text>
     </g>
 
     <g data-detail="FastAPI backend modernized by Joel. Routes chat to Chat Orchestrator and persists conversation history to Cosmos DB." style="cursor:pointer">
-      <rect x="260" y="40" width="120" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="320" y="58" text-anchor="middle" font-size="11" fill="var(--color-text)">Python FastAPI</text>
-      <text x="320" y="74" text-anchor="middle" font-size="10" fill="var(--color-muted)">Container App</text>
+      <rect x="250" y="30" width="120" height="40" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="310" y="48" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">Python FastAPI</text>
+      <text x="310" y="62" text-anchor="middle" font-size="9" fill="var(--color-muted)">Container App</text>
     </g>
 
     <g data-detail="Chat Orchestrator. Microsoft-provided component. Routes user messages to the correct agent in Microsoft Foundry." style="cursor:pointer">
-      <rect x="400" y="40" width="120" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
-      <text x="460" y="58" text-anchor="middle" font-size="11" fill="var(--color-text)">Chat</text>
-      <text x="460" y="74" text-anchor="middle" font-size="10" fill="var(--color-muted)">Orchestrator</text>
+      <rect x="380" y="30" width="115" height="40" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+      <text x="437" y="46" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">Chat</text>
+      <text x="437" y="62" text-anchor="middle" font-size="9" fill="var(--color-muted)">Orchestrator</text>
     </g>
 
-    <g data-detail="Microsoft Foundry AI project runtime. Microsoft-provided. Hosts agents and tools." style="cursor:pointer">
-      <rect x="540" y="40" width="120" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
-      <text x="600" y="58" text-anchor="middle" font-size="11" fill="var(--color-text)">Microsoft</text>
-      <text x="600" y="74" text-anchor="middle" font-size="10" fill="var(--color-muted)">Foundry</text>
+    <g data-detail="Microsoft Foundry AI project runtime. Microsoft-provided. Hosts agents and tools including FoundryAgent and the SQL Query Tool." style="cursor:pointer">
+      <rect x="505" y="30" width="120" height="40" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+      <text x="565" y="46" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">Microsoft</text>
+      <text x="565" y="62" text-anchor="middle" font-size="9" fill="var(--color-muted)">Foundry</text>
     </g>
 
     <g data-detail="FoundryAgent ('first-agent'). Microsoft-provided agent definition. Processes queries and invokes the SQL Query Tool." style="cursor:pointer">
-      <rect x="680" y="40" width="120" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
-      <text x="740" y="58" text-anchor="middle" font-size="11" fill="var(--color-text)">FoundryAgent</text>
-      <text x="740" y="74" text-anchor="middle" font-size="10" fill="var(--color-muted)">(first-agent)</text>
-    </g>
-
-    <g data-detail="SQL Query Tool. Microsoft-provided. Generates T-SQL from natural language and executes against Azure SQL." style="cursor:pointer">
-      <rect x="760" y="140" width="120" height="44" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
-      <text x="820" y="158" text-anchor="middle" font-size="11" fill="var(--color-text)">SQL Query Tool</text>
-      <text x="820" y="174" text-anchor="middle" font-size="10" fill="var(--color-muted)">Microsoft-provided</text>
-    </g>
-
-    <g data-detail="Azure SQL with AdventureWorksLT. Entra auth, SQL firewall, and role assignments configured by Joel." style="cursor:pointer">
-      <rect x="760" y="260" width="120" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="820" y="278" text-anchor="middle" font-size="11" fill="var(--color-text)">Azure SQL</text>
-      <text x="820" y="294" text-anchor="middle" font-size="10" fill="var(--color-muted)">AdventureWorksLT</text>
+      <rect x="635" y="30" width="115" height="40" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+      <text x="692" y="46" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">FoundryAgent</text>
+      <text x="692" y="62" text-anchor="middle" font-size="9" fill="var(--color-muted)">(first-agent)</text>
     </g>
 
     <g data-detail="Cosmos DB for conversation persistence. Networking and data-plane permissions configured by Joel." style="cursor:pointer">
-      <rect x="260" y="160" width="120" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="320" y="178" text-anchor="middle" font-size="11" fill="var(--color-text)">Cosmos DB</text>
-      <text x="320" y="194" text-anchor="middle" font-size="10" fill="var(--color-muted)">Persistence</text>
+      <rect x="250" y="150" width="120" height="40" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="310" y="168" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">Cosmos DB</text>
+      <text x="310" y="182" text-anchor="middle" font-size="9" fill="var(--color-muted)">Persistence</text>
     </g>
 
-    <g data-detail="Azure Container Registry. Hosts frontend and backend images. Managed by Terraform." style="cursor:pointer">
-      <rect x="120" y="160" width="120" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="180" y="178" text-anchor="middle" font-size="11" fill="var(--color-text)">ACR</text>
-      <text x="180" y="194" text-anchor="middle" font-size="10" fill="var(--color-muted)">Container Registry</text>
+    <g data-detail="SQL Query Tool. Microsoft-provided. Generates T-SQL from natural language and executes against Azure SQL (AdventureWorksLT)." style="cursor:pointer">
+      <rect x="635" y="150" width="115" height="40" rx="4" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.5"/>
+      <text x="692" y="168" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">SQL Query Tool</text>
+      <text x="692" y="182" text-anchor="middle" font-size="9" fill="var(--color-muted)">Microsoft-provided</text>
     </g>
 
-    <g data-detail="Container Apps Environment. Consumption tier. Replaced the original App Service B1 plan. Managed by Terraform." style="cursor:pointer">
-      <rect x="10" y="160" width="100" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="60" y="176" text-anchor="middle" font-size="10" fill="var(--color-text)">ACA Environment</text>
-      <text x="60" y="192" text-anchor="middle" font-size="10" fill="var(--color-muted)">Consumption</text>
+    <g data-detail="Azure SQL with AdventureWorksLT. Active structured-data backend. Entra auth, SQL firewall, and role assignments configured by Joel." style="cursor:pointer">
+      <rect x="762" y="150" width="130" height="40" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="827" y="168" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">Azure SQL</text>
+      <text x="827" y="182" text-anchor="middle" font-size="9" fill="var(--color-muted)">AdventureWorksLT</text>
+    </g>
+
+    <g data-detail="Container Apps Environment (Consumption tier). Replaced the original App Service B1 plan after East US quota was 0. Managed by Terraform." style="cursor:pointer">
+      <rect x="10" y="270" width="115" height="36" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="67" y="286" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text)">ACA Environment</text>
+      <text x="67" y="299" text-anchor="middle" font-size="8" fill="var(--color-muted)">Consumption</text>
+    </g>
+
+    <g data-detail="Azure Container Registry. Hosts frontend and backend container images. Managed by Terraform, accessed by Managed Identity." style="cursor:pointer">
+      <rect x="135" y="270" width="80" height="36" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="175" y="286" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text)">ACR</text>
+      <text x="175" y="299" text-anchor="middle" font-size="8" fill="var(--color-muted)">Container Registry</text>
+    </g>
+
+    <g data-detail="User-assigned Managed Identity. Provides credential-less access to ACR, Cosmos DB, Azure SQL, and other services. Configured by Joel via Terraform." style="cursor:pointer">
+      <rect x="380" y="270" width="130" height="36" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="445" y="286" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text)">Managed Identity</text>
+      <text x="445" y="299" text-anchor="middle" font-size="8" fill="var(--color-muted)">User-assigned</text>
+    </g>
+
+    <g data-detail="Brownfield Terraform IaC managing all Azure infrastructure: Container Apps, ACR, Managed Identity, Log Analytics, and RBAC assignments." style="cursor:pointer">
+      <rect x="520" y="270" width="100" height="36" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="570" y="286" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text)">Terraform</text>
+      <text x="570" y="299" text-anchor="middle" font-size="8" fill="var(--color-muted)">IaC</text>
     </g>
 
     <g data-detail="Log Analytics workspace. Captures Container Apps diagnostic logs. Managed by Terraform." style="cursor:pointer">
-      <rect x="10" y="280" width="100" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="60" y="298" text-anchor="middle" font-size="10" fill="var(--color-text)">Log Analytics</text>
-      <text x="60" y="314" text-anchor="middle" font-size="10" fill="var(--color-muted)">Diagnostics</text>
-    </g>
-
-    <g data-detail="User-assigned Managed Identity. Provides credential-less access to ACR, Cosmos DB, Azure SQL. Configured via Terraform." style="cursor:pointer">
-      <rect x="540" y="260" width="120" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="600" y="278" text-anchor="middle" font-size="11" fill="var(--color-text)">Managed Identity</text>
-      <text x="600" y="294" text-anchor="middle" font-size="10" fill="var(--color-muted)">User-assigned</text>
-    </g>
-
-    <g data-detail="Brownfield Terraform IaC managing all Azure infrastructure: Container Apps, ACR, Managed Identity, Log Analytics, and RBAC." style="cursor:pointer">
-      <rect x="400" y="260" width="120" height="44" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
-      <text x="460" y="282" text-anchor="middle" font-size="11" fill="var(--color-text)">Terraform</text>
-      <text x="460" y="298" text-anchor="middle" font-size="10" fill="var(--color-muted)">IaC</text>
+      <rect x="630" y="270" width="120" height="36" rx="4" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1.5"/>
+      <text x="690" y="286" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text)">Log Analytics</text>
+      <text x="690" y="299" text-anchor="middle" font-size="8" fill="var(--color-muted)">Diagnostics</text>
     </g>
 
     <g opacity="0.4">
-      <rect x="680" y="260" width="70" height="44" rx="4" fill="none" stroke="var(--color-line)" stroke-dasharray="5 3" stroke-width="1.5"/>
-      <text x="715" y="278" text-anchor="middle" font-size="10" fill="var(--color-muted)">MS Fabric</text>
-      <text x="715" y="294" text-anchor="middle" font-size="9" fill="var(--color-muted)">(not active)</text>
+      <rect x="762" y="270" width="120" height="36" rx="4" fill="none" stroke="var(--color-line)" stroke-dasharray="5 3" stroke-width="1.5"/>
+      <text x="822" y="286" text-anchor="middle" font-size="9" fill="var(--color-muted)">MS Fabric</text>
+      <text x="822" y="299" text-anchor="middle" font-size="8" fill="var(--color-muted)">(not active)</text>
     </g>
 
-    <line x1="100" y1="62" x2="118" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="240" y1="62" x2="258" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="380" y1="62" x2="398" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="520" y1="62" x2="538" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="660" y1="62" x2="678" y2="62" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="800" y1="84" x2="820" y2="138" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="820" y1="184" x2="820" y2="258" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="320" y1="84" x2="320" y2="158" stroke="var(--color-muted)" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
-    <line x1="760" y1="282" x2="680" y2="282" stroke="var(--color-accent)" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#arrow-return)"/>
+    <line x1="112" y1="50" x2="118" y2="50" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="242" y1="50" x2="248" y2="50" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="372" y1="50" x2="378" y2="50" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="497" y1="50" x2="503" y2="50" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="627" y1="50" x2="633" y2="50" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="310" y1="70" x2="310" y2="148" stroke="var(--color-muted)" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+    <line x1="692" y1="70" x2="692" y2="148" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="752" y1="170" x2="760" y2="170" stroke="var(--color-muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-    <rect x="10" y="380" width="14" height="14" rx="2" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1"/>
-    <text x="30" y="392" font-size="11" fill="var(--color-muted)">Joel-configured</text>
-    <rect x="170" y="380" width="14" height="14" rx="2" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
-    <text x="190" y="392" font-size="11" fill="var(--color-muted)">Microsoft-provided</text>
-    <rect x="360" y="380" width="14" height="14" rx="2" fill="none" stroke="var(--color-line)" stroke-dasharray="3 2"/>
-    <text x="380" y="392" font-size="11" fill="var(--color-muted)">Alternative path (not active)</text>
+    <path d="M 892 170 L 910 170 L 910 20 L 60 20 L 60 28" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrow-return)"/>
+
+    <rect x="10" y="322" width="12" height="12" rx="2" fill="var(--color-accent-soft)" stroke="var(--color-accent)" stroke-width="1"/>
+    <text x="28" y="333" font-size="10" fill="var(--color-muted)">Joel-configured</text>
+    <rect x="175" y="322" width="12" height="12" rx="2" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+    <text x="193" y="333" font-size="10" fill="var(--color-muted)">Microsoft-provided</text>
+    <rect x="360" y="322" width="12" height="12" rx="2" fill="none" stroke="var(--color-line)" stroke-dasharray="3 2"/>
+    <text x="378" y="333" font-size="10" fill="var(--color-muted)">Alternative / not active</text>
+    <line x1="540" y1="328" x2="570" y2="328" stroke="var(--color-accent)" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrow-return)"/>
+    <text x="578" y="333" font-size="10" fill="var(--color-muted)">Response path</text>
   </g>
 </svg>
 </div>
+
+<div id="arch-detail-panel" style="display:none;margin:0.5rem 0;padding:0.75rem 1rem;background:var(--color-surface);border:1px solid var(--color-line);border-radius:4px;font-size:0.85rem;color:var(--color-text);line-height:1.5"></div>
 
 <div style="text-align:center;margin-top:0.75rem">
   <button id="arch-toggle" type="button" style="font-size:0.85rem;padding:0.75rem 1rem;background:var(--color-surface);border:1px solid var(--color-line);border-radius:4px;cursor:pointer;color:var(--color-text)">
