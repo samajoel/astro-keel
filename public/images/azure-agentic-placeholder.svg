@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480" role="img" aria-label="Agentic Data Application — architecture schematic showing React frontend, FastAPI backend, AI agent, and Azure SQL components">
+  <title>Agentic Data Application — project visual placeholder</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#ffffff" stroke-width="0.4" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="480" fill="#111318"/>
+  <rect width="720" height="480" fill="url(#grid)"/>
+
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="720" height="3" fill="#4f90d9"/>
+
+  <!-- Title block -->
+  <text x="360" y="58" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" letter-spacing="0.12em" fill="#4f90d9" text-transform="uppercase">PORTFOLIO · AZURE · AI</text>
+  <text x="360" y="94" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="700" fill="#f0f2f5" letter-spacing="-0.01em">Agentic Data Application</text>
+  <text x="360" y="120" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#8a95a3" letter-spacing="0.04em">Azure · Python · Microsoft Foundry</text>
+
+  <!-- Connector lines (drawn first, behind boxes) -->
+  <!-- User → React -->
+  <line x1="100" y1="215" x2="162" y2="215" stroke="#4f90d9" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr)"/>
+  <!-- React → FastAPI -->
+  <line x1="262" y1="215" x2="324" y2="215" stroke="#4f90d9" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr)"/>
+  <!-- FastAPI → AI Agent -->
+  <line x1="424" y1="215" x2="486" y2="215" stroke="#4f90d9" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr)"/>
+  <!-- AI Agent → Azure SQL (down) -->
+  <line x1="556" y1="235" x2="556" y2="306" stroke="#4f90d9" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr)"/>
+  <!-- FastAPI → Cosmos DB (down) -->
+  <line x1="374" y1="235" x2="374" y2="306" stroke="#8a95a3" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="4 3" marker-end="url(#arrdash)"/>
+
+  <defs>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#4f90d9" opacity="0.6"/>
+    </marker>
+    <marker id="arrdash" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#8a95a3" opacity="0.5"/>
+    </marker>
+  </defs>
+
+  <!-- User node -->
+  <rect x="36" y="193" width="64" height="44" rx="4" fill="#1a1f2b" stroke="#3a4356" stroke-width="1.5"/>
+  <text x="68" y="212" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#c8d0da">User</text>
+  <text x="68" y="228" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#5a6475">Browser</text>
+
+  <!-- React / nginx box -->
+  <rect x="162" y="187" width="100" height="56" rx="4" fill="#1a2436" stroke="#4f90d9" stroke-width="1.5"/>
+  <text x="212" y="207" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a8d4ff">React / nginx</text>
+  <text x="212" y="222" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#4f90d9">Frontend</text>
+  <text x="212" y="235" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#3a6496">Container App</text>
+
+  <!-- FastAPI box -->
+  <rect x="324" y="187" width="100" height="56" rx="4" fill="#1a2436" stroke="#4f90d9" stroke-width="1.5"/>
+  <text x="374" y="207" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a8d4ff">FastAPI</text>
+  <text x="374" y="222" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#4f90d9">Backend</text>
+  <text x="374" y="235" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#3a6496">Python · Container App</text>
+
+  <!-- AI Agent box -->
+  <rect x="486" y="187" width="100" height="56" rx="4" fill="#1e1a2e" stroke="#7c6fd4" stroke-width="1.5"/>
+  <text x="536" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#c4b8ff">AI Agent</text>
+  <text x="536" y="220" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#7c6fd4">FoundryAgent</text>
+  <text x="536" y="235" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#5a4fa0">Microsoft Foundry</text>
+
+  <!-- Azure SQL box -->
+  <rect x="506" y="306" width="100" height="52" rx="4" fill="#1a2436" stroke="#4f90d9" stroke-width="1.5"/>
+  <text x="556" y="325" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a8d4ff">Azure SQL</text>
+  <text x="556" y="340" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#4f90d9">AdventureWorksLT</text>
+  <text x="556" y="352" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#3a6496">SQL Query Tool</text>
+
+  <!-- Cosmos DB box (persistence) -->
+  <rect x="324" y="306" width="100" height="52" rx="4" fill="#1a2436" stroke="#4f90d9" stroke-width="1"/>
+  <text x="374" y="325" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a8d4ff">Cosmos DB</text>
+  <text x="374" y="340" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#4f90d9">Persistence</text>
+  <text x="374" y="352" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#3a6496">Conversation history</text>
+
+  <!-- Infrastructure label -->
+  <rect x="36" y="306" width="240" height="52" rx="4" fill="#141820" stroke="#2a3448" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="156" y="326" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" letter-spacing="0.08em" fill="#4f90d9" text-transform="uppercase">INFRASTRUCTURE</text>
+  <text x="156" y="342" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8a95a3">Terraform · Managed Identity</text>
+  <text x="156" y="356" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#5a6475">Azure Container Apps Environment</text>
+
+  <!-- Status badge -->
+  <rect x="280" y="418" width="160" height="28" rx="14" fill="#1a2436" stroke="#4f90d9" stroke-width="1"/>
+  <circle cx="298" cy="432" r="4" fill="#4f90d9"/>
+  <text x="360" y="437" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" font-weight="700" letter-spacing="0.06em" fill="#4f90d9">DEPLOYED · LIVE</text>
+
+  <!-- Footer tags -->
+  <text x="50" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">Terraform</text>
+  <text x="118" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">·</text>
+  <text x="128" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">Azure Container Apps</text>
+  <text x="280" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">·</text>
+  <text x="290" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">Python</text>
+  <text x="336" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">·</text>
+  <text x="346" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">Azure SQL</text>
+  <text x="406" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">·</text>
+  <text x="416" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">Microsoft Foundry</text>
+  <text x="530" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">·</text>
+  <text x="540" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#3a4356">AI Agents</text>
+</svg>

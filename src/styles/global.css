@@ -1058,4 +1058,253 @@ pre code {
   h3 {
     max-width: 100%;
   }
+
+  .featured-work,
+  .contribution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-work-image {
+    border-right: 0;
+    border-bottom: var(--hairline);
+  }
+
+  .decision-step,
+  .troubleshoot-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Diagram scroll containers ──────────────────────────────────────── */
+
+.diagram-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.diagram-scroll svg {
+  min-width: 600px;
+}
+
+.diagram-scroll.er-diagram svg {
+  min-width: 900px;
+}
+
+/* ── Featured Work block (2-column: image | content) ────────────────── */
+
+.featured-work {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  border: var(--hairline);
+  background: var(--color-bg);
+}
+
+.featured-work-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-right: var(--hairline);
+  background: var(--color-soft);
+}
+
+.featured-work-content {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.featured-work-content h3 {
+  max-width: 20ch;
+  margin-bottom: calc(var(--baseline) * 0.5);
+}
+
+.featured-work-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: calc(var(--baseline) * 0.5);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.featured-work-status::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* ── At-a-Glance block (dl/dt/dd grid) ─────────────────────────────── */
+
+.at-a-glance {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1px;
+  background: var(--color-line);
+  border: var(--hairline);
+  margin-block: calc(var(--baseline) * 1.5);
+}
+
+.at-a-glance > div {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  background: var(--color-bg);
+}
+
+.at-a-glance dt {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.at-a-glance dd {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* ── Work status badge ──────────────────────────────────────────────── */
+
+.work-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.work-status::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* ── Contribution grid (Microsoft | Joel side-by-side) ──────────────── */
+
+.contribution-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 1px;
+  background: var(--color-line);
+  border: var(--hairline);
+  margin-block: calc(var(--baseline) * 1.5);
+}
+
+.contribution-block {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--color-bg);
+}
+
+.contribution-block h4 {
+  margin: 0 0 calc(var(--baseline) * 0.75);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.contribution-category {
+  margin-bottom: var(--baseline);
+}
+
+.contribution-category h5 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.contribution-category ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+/* ── Key decision flow (5-stage sequence) ───────────────────────────── */
+
+.decision-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-block: calc(var(--baseline) * 1.5);
+  border: var(--hairline);
+}
+
+.decision-step {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 2vw, 1.5rem);
+  background: var(--color-bg);
+  border-bottom: var(--hairline);
+}
+
+.decision-step:last-child {
+  border-bottom: 0;
+}
+
+.decision-step-label {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-top: 0.2rem;
+}
+
+.decision-step-body {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.decision-step-body strong {
+  color: var(--color-text);
+}
+
+/* ── Troubleshooting structured items ───────────────────────────────── */
+
+.troubleshoot-item {
+  margin-block: calc(var(--baseline) * 1.25);
+  border: var(--hairline);
+}
+
+.troubleshoot-row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem clamp(1rem, 2vw, 1.5rem);
+  border-bottom: var(--hairline);
+}
+
+.troubleshoot-row:last-child {
+  border-bottom: 0;
+}
+
+.troubleshoot-label {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-top: 0.2rem;
 }

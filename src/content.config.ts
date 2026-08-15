@@ -12,6 +12,7 @@ const works = defineCollection({
       description: z.string(),
       tech: z.array(z.string()),
       link: z.string().url().optional(),
+      liveUrl: z.string().url().optional(),
       repo: z.string().url().optional(),
       thumbnail: image().optional(),
       order: z.number().optional(),

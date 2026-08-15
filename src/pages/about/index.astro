@@ -1,8 +1,4 @@
 ---
-// The prose on this page is placeholder copy — rewrite it as your own. It is
-// intentionally *not* in `src/i18n/`: the dictionary holds UI chrome, so a
-// translator isn't handed someone else's biography, and you don't have to open
-// a dictionary file to edit your own about page.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SITE } from '../../consts';
 import { t } from '../../i18n';
@@ -10,69 +6,104 @@ import { t } from '../../i18n';
 
 <BaseLayout
   title={t('about.title')}
-  description="AI Solutions Builder working at the intersection of cloud, automation, and software engineering."
+  description="AI solutions builder working at the intersection of cloud, automation, and AI."
 >
+  <!-- Introduction -->
   <section class="page-head section">
-    <p class="eyebrow">{t('about.eyebrow')}</p>
-    <h1>AI Solutions Builder working at the intersection of cloud, automation, and software engineering.</h1>
+    <p class="eyebrow">Joel Samaniego</p>
+    <h1>AI solutions builder working at the intersection of cloud, automation, and AI.</h1>
     <p class="lead">
-      Building practical prototypes and deployable applications from business needs.
+      Building practical, deployable solutions from real business problems.
     </p>
   </section>
 
+  <!-- What I Focus On -->
   <section class="section prose-grid">
     <div>
-      <p class="eyebrow">Profile</p>
-      <h2>From business need to working solution.</h2>
+      <p class="eyebrow">Focus</p>
+      <h2>What I build.</h2>
     </div>
     <div class="prose-stack">
       <p>
-        I build AI, cloud, and automation solutions focused on turning business needs into practical
-        prototypes and deployable applications.
+        I build with generative AI and agentic applications — connecting LLMs, tools, and
+        orchestration layers to real data and workflows. My focus is on solutions that are
+        actually useful, not demos that stop at a proof of concept.
       </p>
       <p>
-        I work with generative AI, AI agents, APIs, and cloud technologies to create solutions that
-        are useful, scalable, and connected to real operational challenges.
+        On the cloud side: Azure deployment, infrastructure as code with Terraform, Container
+        Apps, Managed Identity, and the integration work that connects everything together.
+        Automation, APIs, and practical digital solutions round out the stack.
       </p>
     </div>
   </section>
 
+  <!-- How I Work -->
+  <section class="section split-overview" aria-label="Process">
+    <div>
+      <p class="eyebrow">Process</p>
+      <h2>How I work.</h2>
+    </div>
+    <div class="feature-list">
+      <article>
+        <h3>Understand → Define</h3>
+        <p>Start with the business or operational problem before choosing a technology.</p>
+      </article>
+      <article>
+        <h3>Build → Deploy</h3>
+        <p>Implement and configure end-to-end — infrastructure, services, integrations, and data.</p>
+      </article>
+      <article>
+        <h3>Troubleshoot → Validate</h3>
+        <p>Work through real constraints, adapt when the environment pushes back, confirm it works.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Current Interests -->
+  <section class="section prose-grid">
+    <div>
+      <p class="eyebrow">Now</p>
+      <h2>Current interests.</h2>
+    </div>
+    <div class="prose-stack">
+      <p>
+        Agentic AI applications — specifically how to connect language models to structured
+        enterprise data through tool-based architectures. Azure cloud architecture, infrastructure
+        automation with Terraform, and the full deployment engineering that ships working systems
+        into real environments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
   <section class="section" aria-label={t('about.ledgerLabel')}>
     <div class="about-ledger">
       <article>
-        <span>01</span>
-        <h3>Current focus</h3>
-        <p>Generative AI solutions, cloud deployment, and automation systems that connect to real business workflows.</p>
-      </article>
-      <article>
-        <span>02</span>
-        <h3>Background</h3>
+        <h3>GitHub</h3>
         <p>
-          Product development, project management, software engineering, and AI solution design
-          across cloud and automation domains.
+          <a href="https://github.com/samajoel" target="_blank" rel="noopener noreferrer">
+            github.com/samajoel ↗
+          </a>
         </p>
       </article>
       <article>
-        <span>03</span>
-        <h3>Contact</h3>
+        <h3>LinkedIn</h3>
         <p>
-          Open to engineering and product roles. Reach me at
+          <a
+            href="https://www.linkedin.com/in/joel-mateo-samaniego/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            linkedin.com/in/joel-mateo-samaniego ↗
+          </a>
+        </p>
+      </article>
+      <article>
+        <h3>Email</h3>
+        <p>
           <a href="mailto:samajoel@icloud.com">samajoel@icloud.com</a>
         </p>
       </article>
-    </div>
-  </section>
-
-  <section class="section prose-grid about-closing">
-    <div>
-      <p class="eyebrow">Approach</p>
-      <h2>From prototype to production.</h2>
-    </div>
-    <div class="prose-stack">
-      <p>
-        Every project starts with a clear business problem. The focus is on solutions that work in
-        practice: useful, connected, and ready to deploy.
-      </p>
     </div>
   </section>
 </BaseLayout>
