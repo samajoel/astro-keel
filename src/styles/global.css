@@ -1557,3 +1557,185 @@ pre code {
   }
 
 }
+
+
+/* ========================================
+   Featured Work
+======================================== */
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.featured-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.featured-work-image {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  aspect-ratio: 3 / 2;
+
+  object-fit: cover;
+
+  border-radius: var(--radius, 12px);
+}
+
+.featured-work-content {
+  min-width: 0;
+}
+
+.featured-work-content h3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.featured-work-content p {
+  margin-bottom: 1rem;
+}
+
+.featured-work-status {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+}
+
+.featured-work-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-top: var(--baseline);
+}
+
+
+/* ========================================
+   Tablet
+======================================== */
+
+@media (max-width: 768px) {
+  .featured-work {
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+
+    align-items: stretch;
+  }
+
+  .featured-work-image {
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
+    max-height: 320px;
+
+    object-fit: cover;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .featured-work-content h3 {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+  }
+
+  .featured-work-content p {
+    max-width: none;
+  }
+}
+
+
+/* ========================================
+   Mobile
+======================================== */
+
+@media (max-width: 520px) {
+  .section-heading {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 0.5rem;
+  }
+
+  .section-heading .text-link {
+    align-self: flex-start;
+  }
+
+  .featured-work {
+    gap: 1rem;
+  }
+
+  .featured-work-image {
+    aspect-ratio: 16 / 10;
+
+    max-height: 240px;
+  }
+
+  .featured-work-status {
+    font-size: 0.8rem;
+  }
+
+  .featured-work-content h3 {
+    margin-top: 0.65rem;
+    margin-bottom: 0.65rem;
+
+    font-size: clamp(1.3rem, 7vw, 1.6rem);
+
+    line-height: 1.2;
+  }
+
+  .featured-work-content p {
+    font-size: 0.95rem;
+
+    line-height: 1.6;
+  }
+
+  .tag-list {
+    gap: 0.4rem;
+  }
+
+  .tag-list li {
+    font-size: 0.78rem;
+  }
+
+  .featured-work-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0.85rem;
+  }
+
+  .featured-work-actions .button {
+    display: flex;
+
+    justify-content: center;
+
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .featured-work-actions .text-link {
+    align-self: flex-start;
+  }
+}

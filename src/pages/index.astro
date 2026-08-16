@@ -50,48 +50,71 @@ const featuredTags = ['Microsoft Foundry', 'Azure Container Apps', 'Terraform', 
   </section>
 
   <!-- Featured Work -->
-  {featuredWork && (
-    <section class="section" aria-labelledby="featured-work-heading" style="border-top: var(--hairline)">
-      <div class="section-heading">
+{featuredWork && (
+  <section
+    class="section"
+    aria-labelledby="featured-work-heading"
+    style="border-top: var(--hairline)"
+  >
+    <div class="section-heading">
+      <div>
         <p class="eyebrow">Featured Work</p>
         <h2 id="featured-work-heading">Built and deployed.</h2>
-        <a class="text-link" href={withBase('/works/')}>All work</a>
       </div>
-      <div class="featured-work">
-        <img
-          class="featured-work-image"
-          src={withBase('/images/azure-agentic-placeholder.svg')}
-          alt="Architecture schematic for the Agentic Data Application — showing React frontend, FastAPI backend, AI agent, and Azure SQL components"
-          width="720"
-          height="480"
-          loading="lazy"
-        />
-        <div class="featured-work-content">
-          <span class="featured-work-status">Deployed · Live</span>
-          <h3><a href={withBase(`/works/${featuredWork.id}/`)}>{featuredWork.data.title}</a></h3>
-          <p>{featuredWork.data.description}</p>
-          <ul class="tag-list" aria-label="Key technologies">
-            {featuredTags.map((tag) => (
-              <li>{tag}</li>
-            ))}
-          </ul>
-          <div class="action-row" style="margin-top: var(--baseline)">
-            <a class="button" href={withBase(`/works/${featuredWork.id}/`)}>View Case Study</a>
-            {featuredWork.data.liveUrl && (
-              <a
-                class="text-link"
-                href={featuredWork.data.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Live Project ↗
-              </a>
-            )}
-          </div>
+
+      <a class="text-link" href={withBase('/works/')}>All work</a>
+    </div>
+
+    <div class="featured-work">
+      <img
+        class="featured-work-image"
+        src={withBase('/images/azure-agentic-placeholder.svg')}
+        alt="Architecture schematic for the Agentic Data Application — showing React frontend, FastAPI backend, AI agent, and Azure SQL components"
+        width="720"
+        height="480"
+        loading="lazy"
+      />
+
+      <div class="featured-work-content">
+        <span class="featured-work-status">Deployed · Live</span>
+
+        <h3>
+          <a href={withBase(`/works/${featuredWork.id}/`)}>
+            {featuredWork.data.title}
+          </a>
+        </h3>
+
+        <p>{featuredWork.data.description}</p>
+
+        <ul class="tag-list" aria-label="Key technologies">
+          {featuredTags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+
+        <div class="action-row featured-work-actions">
+          <a
+            class="button"
+            href={withBase(`/works/${featuredWork.id}/`)}
+          >
+            View Case Study
+          </a>
+
+          {featuredWork.data.liveUrl && (
+            <a
+              class="text-link"
+              href={featuredWork.data.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Live Project ↗
+            </a>
+          )}
         </div>
       </div>
-    </section>
-  )}
+    </div>
+  </section>
+)}
 
 <!-- Areas of Focus -->
 
